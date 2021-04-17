@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">ContactsAssistant</string>
+    <string name="action_settings">Ustawienia</string>
+
+    <!-- Strings for main activity -->
+    <string name="contacts">Kontakty</string>
+    <string name="tmp">tmp</string>
+
+    <!-- Strings for contacts activity -->
+    <string name="title_activity_contacts">Kontakty</string>
+    <string name="title_activity_tmp">Tmp</string>
+
+    <!-- Strings for contactDetail activity -->
+    <string name="title_activity_contact_detail">Szczegóły kontaktu</string>
+    <string name="image_description">Zdjęcie</string>
+    <string name="edit_button_name">Edytuj</string>
+    <string name="cancel_button_name">Anuluj</string>
+    <string name="save_button_name">Zapisz</string>
+    <string name="address">Adres</string>
+    <string name="notes">Notatki</string>
+    <string name="services_count_label">Ilość usług:</string>
+    <string name="services_cost_label">Koszt usług:</string>
+    <string name="open_services_panel_button">Otwórz panel usług</string>
+
+    <!-- Strings for editContactDetails Activity -->
+    <string name="title_activity_edit_contact_details">Edycja kontaktu</string>
+    <string name="contact_name">Imię i nazwisko</string>
+    <string name="telephone_number">Telefon</string>
+    <string name="email_address">Adres e-mail</string>
+
+    <!-- Strings for notes activity  -->
+    <string name="title_activity_notes">Notatki</string>
+
+    <!-- Strings for services -->
+    <string name="title_activity_services_panel">Zlecenia</string>
+    <string name="title_activity_service_detail">Szczegóły zlecenia</string>
+    <string name="service_cost_label">Koszt:</string>
+</resources>

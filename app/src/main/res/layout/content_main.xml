@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="20dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+    <Button
+        android:id="@+id/contacts_button"
+        android:text="@string/contacts"
+        android:onClick="changeActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp" />
+
+    <Button
+        android:id="@+id/tmp_button"
+        android:text="@string/tmp"
+        android:onClick="changeActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contacts_button"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
