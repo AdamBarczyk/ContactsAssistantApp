@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -118,7 +119,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             long result = db.update(CONTACTS, cv, COLUMN_CONTACT_ID + " = ?",
                     new String[] {String.valueOf(contactModel.getContactId())});
-            if (result == -1) {
+            if (result == 0) {
                 success = false;
             } else {
                 success = true;
@@ -275,7 +276,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             long result = db.update(SERVICES, cv, COLUMN_SERVICE_ID + " = ?",
                     new String[] {String.valueOf(serviceModel.getServiceId())});
-            if (result == -1) {
+            if (result == 0) {
                 success = false;
             } else {
                 success = true;

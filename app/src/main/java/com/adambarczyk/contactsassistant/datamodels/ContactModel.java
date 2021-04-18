@@ -1,6 +1,8 @@
 package com.adambarczyk.contactsassistant.datamodels;
 
-public class ContactModel {
+import java.io.Serializable;
+
+public class ContactModel implements Serializable{
 
     private int contactId;
     private String name;

@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Parcelable;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
@@ -26,7 +26,9 @@ public class ContactsActivity extends AppCompatActivity {
     LinearLayout linearLayoutForContacts;
 
     // id of long-clicked contact button (when user tries to open floating context menu)
-    private int contactButtonId;
+    private int contactId;
+
+
 
     private void buildUI() {
         // load content
@@ -51,6 +53,7 @@ public class ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContactsActivity.this, EditContactDetailsActivity.class);
+                intent.putExtra("addOrEdit", EditContactDetailsActivity.TO_ADD);
                 startActivity(intent);
             }
         });
@@ -73,28 +76,45 @@ public class ContactsActivity extends AppCompatActivity {
 
         if (v.getTag() == "contactButton") {
             getMenuInflater().inflate(R.menu.context_menu, menu);
-            contactButtonId = v.getId();
+
+            // v.getId() in this case returns ID of long-clicked button before menu show up
+            // Each button has got the same ID as the contact "inside" this button,
+            // so buttonId can be used as contactId
+            contactId = v.getId();
         }
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactsActivity.this);
+        ContactModel contactModel;
+
         switch (item.getItemId()) {
+
+            // editing contact using context menu
+
             case R.id.edit_contact_context_menu:
-                Toast.makeText(this, "edytowani edziala", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ContactsActivity.this, EditContactDetailsActivity.class);
+
+                // get ContactModel of contact to edit and pass it to the EditContactDetailsActivity
+                contactModel = dataBaseHelper.getContactById(contactId);
+
+                intent.putExtra("oldContactModel", contactModel);
+                intent.putExtra("addOrEdit", EditContactDetailsActivity.TO_EDIT);
+                startActivity(intent);
                 return true;
+
+
+            // deleting contact using context menu
 
             case R.id.delete_contact_context_menu:
                 Toast.makeText(this, "usuwanie dziala", Toast.LENGTH_SHORT).show();
 
-                // the buttonId is the same as the contactId contain by this button
-                // buttonId can be used as contactId
 
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactsActivity.this);
-                ContactModel contactModel = dataBaseHelper.getContactById(contactButtonId);
-                
+                contactModel = dataBaseHelper.getContactById(contactId);
+
                 if(dataBaseHelper.deleteContact(contactModel)) {
-                    if (dataBaseHelper.deleteAllServicesForOneContact(contactButtonId)) {
+                    if (dataBaseHelper.deleteAllServicesForOneContact(contactId)) {
                         Toast.makeText(this, "Contact removed succesfully",
                                 Toast.LENGTH_SHORT).show();
                     } else {
@@ -105,6 +125,9 @@ public class ContactsActivity extends AppCompatActivity {
                     Toast.makeText(this, "Failure! \n Both contact and its services remained",
                             Toast.LENGTH_SHORT).show();
                 }
+
+                // refresh layout after deleting
+                onRestart();
 
                 return true;
             default:
@@ -119,7 +142,7 @@ public class ContactsActivity extends AppCompatActivity {
 
     public void openContactDetailActivity(int contactID) {
         Intent intent = new Intent(ContactsActivity.this, ContactDetailActivity.class);
-        intent.putExtra("contactID", contactID);
+        intent.putExtra("contactId", contactID);
         startActivity(intent);
     }
 

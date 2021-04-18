@@ -59,7 +59,7 @@ public class ContactDetailActivity extends AppCompatActivity {
     private boolean loadContactData() {
         // load contact data from the database and show it on the screen
 
-        contactId = getIntent().getIntExtra("contactID", -1);
+        contactId = getIntent().getIntExtra("contactId", -1);
 
         if (contactId != -1) {
             DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactDetailActivity.this);
@@ -74,12 +74,6 @@ public class ContactDetailActivity extends AppCompatActivity {
             contactEmailTextView.setText(contactModel.getEmail());
             contactAddressTextView.setText(contactModel.getAddress());
             contactNotesTextView.setText(contactModel.getNotes());
-
-            String tmp = contactModel.getName() + "\n" + contactModel.getPhone() + "\n" +
-                    contactModel.getEmail() + "\n" + contactModel.getAddress() + "\n" +
-                    contactModel.getNotes();
-
-            Toast.makeText(this, tmp, Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
