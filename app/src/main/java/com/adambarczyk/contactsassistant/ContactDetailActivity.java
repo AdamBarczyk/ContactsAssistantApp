@@ -14,12 +14,14 @@ import android.widget.Toast;
 
 public class ContactDetailActivity extends AppCompatActivity {
 
-    private int contactId;
     private TextView contactNameTextView;
     private TextView contactPhoneTextView;
     private TextView contactEmailTextView;
     private TextView contactAddressTextView;
     private TextView contactNotesTextView;
+
+    private ContactModel contactModel;
+    private DataBaseHelper dataBaseHelper;
 
 
 
@@ -30,6 +32,10 @@ public class ContactDetailActivity extends AppCompatActivity {
         this.contactEmailTextView = findViewById(R.id.contactDetailEmail);
         this.contactAddressTextView = findViewById(R.id.contactDetailAddress);
         this.contactNotesTextView = findViewById(R.id.contactDetailNotes);
+
+        // get contact using contact ID from intent
+        int contactId = getIntent().getIntExtra("contactId", -1);
+        contactModel = dataBaseHelper.getContactById(contactId);
 
         // load content on the screen
         if (!loadContactData()) {
@@ -43,6 +49,9 @@ public class ContactDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // get DataBaseHelper
+        dataBaseHelper = new DataBaseHelper(ContactDetailActivity.this);
 
         // load content
         buildUI();
@@ -59,15 +68,14 @@ public class ContactDetailActivity extends AppCompatActivity {
 
 
     public void openContactNotesActivity(View view) {
+
+        // pass contact data to notes activity
         Intent intent = new Intent(ContactDetailActivity.this, NotesActivity.class);
+        intent.putExtra("oldContactModel", contactModel);
         startActivity(intent);
     }
 
     public void openEditContactDetailsActivity(View view) {
-        // get contact for editing
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactDetailActivity.this);
-        contactId = getIntent().getIntExtra("contactId", -1);
-        ContactModel contactModel = dataBaseHelper.getContactById(contactId);
 
         // pass contact data to editing activity
         Intent intent = new Intent(ContactDetailActivity.this, EditContactDetailsActivity.class);
@@ -82,15 +90,8 @@ public class ContactDetailActivity extends AppCompatActivity {
     }
 
     private boolean loadContactData() {
-        // load contact data from the database and show it on the screen
 
-        contactId = getIntent().getIntExtra("contactId", -1);
-
-        if (contactId != -1) {
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactDetailActivity.this);
-
-            // get contact
-            ContactModel contactModel = dataBaseHelper.getContactById(contactId);
+        if (contactModel != null) {
 
             // show contact data on screen
             contactNameTextView.setText(contactModel.getName());
