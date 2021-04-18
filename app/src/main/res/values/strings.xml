@@ -35,4 +35,8 @@
     <string name="title_activity_services_panel">Zlecenia</string>
     <string name="title_activity_service_detail">Szczegóły zlecenia</string>
     <string name="service_cost_label">Koszt:</string>
+
+    <!-- Strings for menus -->
+    <string name="deleteContact">Usuń</string>
+    <string name="editContact">Edytuj</string>
 </resources>
