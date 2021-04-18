@@ -20,92 +20,20 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView">
 
         <LinearLayout
-            android:id="@+id/contactsScrollViewLinearLayout"
+            android:id="@+id/linearLayoutForContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <!-- <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
+                android:drawableLeft="@drawable/ic_baseline_account_circle_24"
                 android:text="Jan Kowalski"
                 android:textAlignment="viewStart"
                 android:textSize="24sp"
-                android:onClick="openContactDetailActivity"/>
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:text="Jan Kowalski"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
+                android:onClick="openContactDetailActivity"/> -->
 
         </LinearLayout>
     </ScrollView>
