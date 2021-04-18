@@ -59,7 +59,7 @@ public class EditContactDetailsActivity extends AppCompatActivity {
         // load content
         buildUI();
 
-        
+
         // button listeners
 
         btn_save.setOnClickListener(new View.OnClickListener() {

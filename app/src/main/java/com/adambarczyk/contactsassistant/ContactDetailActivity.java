@@ -21,13 +21,9 @@ public class ContactDetailActivity extends AppCompatActivity {
     private TextView contactAddressTextView;
     private TextView contactNotesTextView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_detail);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
+
+    private void buildUI() {
         // Initialize text views
         this.contactNameTextView = findViewById(R.id.contactDetailName);
         this.contactPhoneTextView = findViewById(R.id.contactDetailPhone);
@@ -41,13 +37,42 @@ public class ContactDetailActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact_detail);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // load content
+        buildUI();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        // load content
+        buildUI();
+    }
+
+
+
     public void openContactNotesActivity(View view) {
         Intent intent = new Intent(ContactDetailActivity.this, NotesActivity.class);
         startActivity(intent);
     }
 
     public void openEditContactDetailsActivity(View view) {
+        // get contact for editing
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactDetailActivity.this);
+        contactId = getIntent().getIntExtra("contactId", -1);
+        ContactModel contactModel = dataBaseHelper.getContactById(contactId);
+
+        // pass contact data to editing activity
         Intent intent = new Intent(ContactDetailActivity.this, EditContactDetailsActivity.class);
+        intent.putExtra("oldContactModel", contactModel);
+        intent.putExtra("addOrEdit", EditContactDetailsActivity.TO_EDIT);
         startActivity(intent);
     }
 
@@ -63,7 +88,6 @@ public class ContactDetailActivity extends AppCompatActivity {
 
         if (contactId != -1) {
             DataBaseHelper dataBaseHelper = new DataBaseHelper(ContactDetailActivity.this);
-            // TODO: Szukaj rekordu o tym ID w bazie i zamieść jego dane na ekranie
 
             // get contact
             ContactModel contactModel = dataBaseHelper.getContactById(contactId);
