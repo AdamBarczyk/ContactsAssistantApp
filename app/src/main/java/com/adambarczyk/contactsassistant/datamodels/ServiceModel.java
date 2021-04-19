@@ -5,14 +5,19 @@ public class ServiceModel {
     private int contactId;
     private String serviceInfo;
     private int serviceCost;
+    private String serviceName;
+    private float serviceTime;
 
     // constructors
 
-    public ServiceModel(int serviceId, int contactId, String serviceInfo, int serviceCost) {
+    public ServiceModel(int serviceId, int contactId, String serviceInfo,
+                        int serviceCost, String serviceName, float serviceTime) {
         this.serviceId = serviceId;
         this.contactId = contactId;
         this.serviceInfo = serviceInfo;
         this.serviceCost = serviceCost;
+        this.serviceName = serviceName;
+        this.serviceTime = serviceTime;
     }
 
     public ServiceModel(int errorServiceId) {
@@ -24,11 +29,13 @@ public class ServiceModel {
 
     @Override
     public String toString() {
-        return "ServicesModel{" +
+        return "ServiceModel{" +
                 "serviceId=" + serviceId +
                 ", contactId=" + contactId +
-                ", serviceInfo=" + serviceInfo +
+                ", serviceInfo='" + serviceInfo + '\'' +
                 ", serviceCost=" + serviceCost +
+                ", serviceName='" + serviceName + '\'' +
+                ", serviceTime=" + serviceTime +
                 '}';
     }
 
@@ -65,5 +72,21 @@ public class ServiceModel {
 
     public void setServiceCost(int serviceCost) {
         this.serviceCost = serviceCost;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public float getServiceTime() {
+        return serviceTime;
+    }
+
+    public void setServiceTime(float serviceTime) {
+        this.serviceTime = serviceTime;
     }
 }

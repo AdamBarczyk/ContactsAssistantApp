@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/linear_layout_for_all_services"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -23,7 +24,7 @@
                 <Button
                     android:id="@+id/zlecenieTestowe"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Zlecenie testowe"
                     android:textAlignment="viewStart"

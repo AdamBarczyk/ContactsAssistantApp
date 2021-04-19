@@ -140,9 +140,9 @@ public class ContactsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openContactDetailActivity(int contactID) {
+    public void openContactDetailActivity(int contactId) {
         Intent intent = new Intent(ContactsActivity.this, ContactDetailActivity.class);
-        intent.putExtra("contactId", contactID);
+        intent.putExtra("contactId", contactId);
         startActivity(intent);
     }
 
@@ -155,7 +155,9 @@ public class ContactsActivity extends AppCompatActivity {
         for (final ContactModel contact : contactsList) {
             Button button = new Button(this);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
             Drawable img = getResources().getDrawable(R.drawable.ic_baseline_account_circle_24, getTheme());
             img.setBounds(0, 0, 200, 200);
 

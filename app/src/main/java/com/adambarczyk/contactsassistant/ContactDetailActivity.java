@@ -86,6 +86,7 @@ public class ContactDetailActivity extends AppCompatActivity {
 
     public void openServicesPanelActivity(View view) {
         Intent intent = new Intent(ContactDetailActivity.this, ServicesPanelActivity.class);
+        intent.putExtra("contactModel", contactModel);
         startActivity(intent);
     }
 

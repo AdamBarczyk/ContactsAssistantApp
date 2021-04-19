@@ -30,12 +30,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SERVICE_ID = "service_id";
     public static final String COLUMN_SERVICE_INFO = "service_info";
     public static final String COLUMN_SERVICE_COST = "service_cost";
+    public static final String COLUMN_SERVICE_NAME = "service_name";
+    public static final String COLUMN_SERVICE_TIME = "service_time";
 
 
     // constructor
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "Database.db", null, 1);
+        super(context, "Database.db", null, 3);
     }
 
 
@@ -56,6 +58,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 COLUMN_CONTACT_ID + " INTEGER NOT NULL, " +
                 COLUMN_SERVICE_INFO + " TEXT, " +
                 COLUMN_SERVICE_COST + " INTEGER, " +
+                COLUMN_SERVICE_NAME + "TEXT, " +
+                COLUMN_SERVICE_TIME + "FLOAT, " +
                 "FOREIGN KEY (" + COLUMN_CONTACT_ID + ") REFERENCES " +
                 CONTACTS + " (" + COLUMN_CONTACT_ID + "))");
     }
@@ -67,6 +71,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + CONTACTS);
         db.execSQL("DROP TABLE IF EXISTS " + SERVICES);
+        onCreate(db);
     }
 
 
@@ -89,6 +94,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_CONTACT_NOTES, contactModel.getNotes());
 
         long result = db.insert(CONTACTS, null, cv);
+
+        // close the database
+        db.close();
+
         if (result == -1) {
             return false;
         } else {
@@ -136,6 +145,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public ContactModel getContactById(int contactId) {
+        ContactModel contactModel;
+
         SQLiteDatabase db = this.getReadableDatabase();
 
         String queryString = "SELECT * FROM " + CONTACTS + " WHERE " + COLUMN_CONTACT_ID + " = ?";
@@ -153,13 +164,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String address = cursor.getString(4);
             String notes = cursor.getString(5);
 
-            // save loaded data (and contactId) as object of ContactModel class and return it
-            return new ContactModel(contactId, name, email, phone, address, notes);
+            // save loaded data (and contactId) as object of ContactModel class
+            contactModel = new ContactModel(contactId, name, email, phone, address, notes);
 
         } else { // if record not found
             // return object of ContactModel class with field contactId set to -1
-            return new ContactModel(-1);
+            contactModel = new ContactModel(-1);
         }
+
+        // close both the cursor and the database
+        cursor.close();
+        db.close();
+
+        // return contactModel with data of found service or serviceID set to -1 as an error code
+        return contactModel;
     }
 
     public boolean deleteContact(ContactModel contactModel) {
@@ -247,8 +265,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_CONTACT_ID, serviceModel.getContactId());
         cv.put(COLUMN_SERVICE_INFO, serviceModel.getServiceInfo());
         cv.put(COLUMN_SERVICE_COST, serviceModel.getServiceCost());
+        cv.put(COLUMN_SERVICE_NAME, serviceModel.getServiceName());
+        cv.put(COLUMN_SERVICE_TIME, serviceModel.getServiceTime());
 
         long result = db.insert(SERVICES, null, cv);
+
+        // close both the cursor and the database
+        db.close();
+
         if (result == -1) {
             return false;
         } else {
@@ -266,6 +290,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // There is no need to put service_id and contact_id because it shouldn't change when updating
         cv.put(COLUMN_SERVICE_INFO, serviceModel.getServiceInfo());
         cv.put(COLUMN_SERVICE_COST, serviceModel.getServiceCost());
+        cv.put(COLUMN_SERVICE_NAME, serviceModel.getServiceName());
+        cv.put(COLUMN_SERVICE_TIME, serviceModel.getServiceTime());
 
 
         String queryString = "SELECT * FROM " + SERVICES + " WHERE " + COLUMN_SERVICE_ID + " = ?";
@@ -293,6 +319,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public ServiceModel getServiceById(int serviceId) {
+        ServiceModel serviceModel;
+
         SQLiteDatabase db = this.getReadableDatabase();
 
         String queryString = "SELECT * FROM " + SERVICES + " WHERE " + COLUMN_SERVICE_ID + " = ?";
@@ -307,14 +335,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             int contactId = cursor.getInt(1);
             String serviceInfo = cursor.getString(2);
             int serviceCost = cursor.getInt(3);
+            String serviceName = cursor.getString(4);
+            float serviceTime = cursor.getFloat(5);
 
-            // save loaded data (and serviceId) as object of ServiceModel class and return it
-            return new ServiceModel(serviceId, contactId, serviceInfo, serviceCost);
+            // save loaded data (and serviceId) as object of ServiceModel class
+            serviceModel = new ServiceModel(serviceId, contactId, serviceInfo,
+                    serviceCost, serviceName, serviceTime);
 
         } else { // if record not found
-            // return object of ServiceModel class with field serviceId set to -1
-            return new ServiceModel(-1);
+            // create object of ServiceModel class with serviceId set to -1
+            serviceModel = new ServiceModel(-1);
         }
+
+        // close both the cursor and the database
+        cursor.close();
+        db.close();
+
+        // return serviceModel with data of found service or serviceID set to -1 as an error code
+        return serviceModel;
     }
 
     public boolean deleteService(ServiceModel serviceModel) {
@@ -379,6 +417,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             success = false;
         }
 
+        // close both the cursor and the database
+        cursor.close();
+        db.close();
+
         return success;
     }
 
@@ -401,13 +443,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 int contactID = cursor.getInt(1);
                 String serviceInfo = cursor.getString(2);
                 int serviceCost = cursor.getInt(3);
+                String serviceName = cursor.getString(4);
+                float serviceTime = cursor.getFloat(5);
 
-                ServiceModel newService = new ServiceModel(serviceID, contactID, serviceInfo, serviceCost);
+                ServiceModel newService = new ServiceModel(serviceID, contactID, serviceInfo,
+                        serviceCost, serviceName, serviceTime);
                 returnList.add(newService);
             } while (cursor.moveToNext());
         } else {
             // do nothing, there are no services to add
         }
+
+        // close both the cursor and the database
+        cursor.close();
+        db.close();
 
         return returnList;
     }
