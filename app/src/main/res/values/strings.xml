@@ -58,5 +58,27 @@
     <string name="something_went_wrong_message">Coś poszło nie tak</string>
     <string name="unable_to_load_data_message">Nie udało się wczytać danych</string>
     <string name="too_large_number_message">Co najmniej jedna z wprowadzonych liczb jest zbyt duża</string>
+
+    <string name="contact_removed_but_services_not">Błąd! Kontakt został usunięty, ale nie udało się usunać jego usług</string>
+    <string name="contact_and_services_not_removed">Błąd! Ani konta ani jego usługi nie zostały usunięte</string>
+    <string name="unable_to_add_or_edit_contact">Nie udało się dodać lub edytować kontaktu</string>
+    <string name="unable_to_add_or_edit_service">Nie udało się dodać lub edytować usługi</string>
+
+    <string name="contact_removed_successfully">Kontakt usunięty pomyślnie</string>
+    <string name="contact_added_successfully">Kontakt dodany pomyślnie</string>
+    <string name="unable_to_add_contact">Nie udało się dodać kontaktu</string>
+    <string name="contact_updated">Kontakt został zaktualizowany</string>
+    <string name="unable_to_update_contact">Nie udało się zaktualizować kontaktu</string>
+    <string name="unable_to_load_contacts">Nie udało się załadować kontaktów</string>
+
+    <string name="unable_to_remove_service">Błąd! Nie udało się usunąć usługi</string>
+
+    <string name="service_removed_successfully">Usługa usunięta pomyślnie</string>
+    <string name="service_added_successfully">Usługa dodana pomyślnie</string>
+    <string name="unable_to_add_service">Nie udało się dodać usługi</string>
+    <string name="service_updated">Usługa została zaktualizowana</string>
+    <string name="unable_to_update_service">Nie udało się zaktualizować usługi</string>
+    <string name="unable_to_load_services">Nie udało się załadować usług</string>
+
     <string name="currency">zł</string>
 </resources>

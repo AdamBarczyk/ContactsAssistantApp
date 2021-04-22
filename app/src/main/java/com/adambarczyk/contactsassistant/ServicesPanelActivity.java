@@ -39,14 +39,14 @@ public class ServicesPanelActivity extends AppCompatActivity {
         linearLayoutForAllServices.removeAllViews(); // clear layout before loading all contacts again
 
         // load parent contact for services
-        contactModel = (ContactModel) getIntent().getSerializableExtra("contactModel");
+        contactModel = (ContactModel) getIntent().getSerializableExtra(Constant.CONTACT_MODEL);
 
         // load services for parent contact
         servicesList = loadServicesFromDatabase();
 
         // show services on the screen
         if (!addViewForEachService(servicesList)) {
-            Toast.makeText(this, "Couldn't load services", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.unable_to_load_services, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -62,8 +62,8 @@ public class ServicesPanelActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ServicesPanelActivity.this, EditServiceDetailsActivity.class);
-                intent.putExtra("addOrEdit", Constant.TO_ADD);
-                intent.putExtra("parentContactModel", contactModel);
+                intent.putExtra(Constant.ADD_OR_EDIT, Constant.TO_ADD);
+                intent.putExtra(Constant.PARENT_CONTACT_MODEL, contactModel);
                 startActivity(intent);
             }
         });
@@ -83,9 +83,8 @@ public class ServicesPanelActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        Toast.makeText(this, "dupa", Toast.LENGTH_SHORT).show();
 
-        if (v.getTag() == "serviceButton") {
+        if (v.getTag() == Constant.SERVICE_BUTTON) {
             getMenuInflater().inflate(R.menu.service_context_menu, menu);
 
             // v.getId() in this case returns ID of long-clicked button before menu show up
@@ -110,9 +109,9 @@ public class ServicesPanelActivity extends AppCompatActivity {
                 // get ServiceModel of service to edit and pass it to the EditServiceDetailsActivity
                 serviceModel = dataBaseHelper.getServiceById(serviceId);
 
-                intent.putExtra("oldServiceModel", serviceModel);
-                intent.putExtra("parentContactModel", contactModel);
-                intent.putExtra("addOrEdit", Constant.TO_EDIT);
+                intent.putExtra(Constant.OLD_SERVICE_MODEL, serviceModel);
+                intent.putExtra(Constant.PARENT_CONTACT_MODEL, contactModel);
+                intent.putExtra(Constant.ADD_OR_EDIT, Constant.TO_EDIT);
                 startActivity(intent);
                 return true;
 
@@ -124,10 +123,10 @@ public class ServicesPanelActivity extends AppCompatActivity {
                 serviceModel = dataBaseHelper.getServiceById(serviceId);
 
                 if (dataBaseHelper.deleteService(serviceModel)) {
-                    Toast.makeText(this, "Service removed successfully",
+                    Toast.makeText(this, R.string.service_removed_successfully,
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Failure! \n Couldn't remove the service",
+                    Toast.makeText(this, R.string.unable_to_remove_service,
                             Toast.LENGTH_SHORT).show();
                 }
 
@@ -148,8 +147,8 @@ public class ServicesPanelActivity extends AppCompatActivity {
 
     public void openServiceDetailActivity(int serviceId) {
         Intent intent = new Intent(ServicesPanelActivity.this, ServiceDetailActivity.class);
-        intent.putExtra("serviceId", serviceId);
-        intent.putExtra("parentContactModel", contactModel);
+        intent.putExtra(Constant.SERVICE_ID, serviceId);
+        intent.putExtra(Constant.PARENT_CONTACT_MODEL, contactModel);
         startActivity(intent);
     }
 
@@ -189,7 +188,7 @@ public class ServicesPanelActivity extends AppCompatActivity {
                     1.0f
             );
             button.setId(service.getServiceId());
-            button.setTag("serviceButton");
+            button.setTag(Constant.SERVICE_BUTTON);
             button.setLayoutParams(btnLayoutParams);
             button.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             button.setText(service.getServiceName());

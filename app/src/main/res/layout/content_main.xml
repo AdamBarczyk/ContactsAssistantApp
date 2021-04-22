@@ -15,14 +15,5 @@
         android:onClick="changeActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="230dp" />
-
-    <Button
-        android:id="@+id/tmp_button"
-        android:text="@string/tmp"
-        android:onClick="changeActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contacts_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="280dp" />
 </RelativeLayout>

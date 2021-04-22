@@ -34,11 +34,11 @@ public class ServiceDetailActivity extends AppCompatActivity {
         this.tvServiceInfo = findViewById(R.id.service_detail_info);
 
         // get service using service ID from ServicesPanelActivity sent via intent
-        int serviceId = getIntent().getIntExtra("serviceId", Constant.ERROR);
+        int serviceId = getIntent().getIntExtra(Constant.SERVICE_ID, Constant.ERROR);
         serviceModel = dataBaseHelper.getServiceById(serviceId);
 
         // get parentContact for service from ServicesPanelActivity sent via intent
-        parentContactModel = (ContactModel) getIntent().getSerializableExtra("parentContactModel");
+        parentContactModel = (ContactModel) getIntent().getSerializableExtra(Constant.PARENT_CONTACT_MODEL);
 
         //load content on the screen
         if (!loadServiceData()) {
@@ -87,9 +87,9 @@ public class ServiceDetailActivity extends AppCompatActivity {
 
         // pass service data to editing activity
         Intent intent = new Intent(this, EditServiceDetailsActivity.class);
-        intent.putExtra("oldServiceModel", serviceModel);
-        intent.putExtra("parentContactModel", parentContactModel);
-        intent.putExtra("addOrEdit", Constant.TO_EDIT);
+        intent.putExtra(Constant.OLD_SERVICE_MODEL, serviceModel);
+        intent.putExtra(Constant.PARENT_CONTACT_MODEL, parentContactModel);
+        intent.putExtra(Constant.ADD_OR_EDIT, Constant.TO_EDIT);
         startActivity(intent);
     }
 }

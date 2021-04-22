@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="\t\t\tOlkusz \n \t\t\tul.Króla Kazimierza Wielkiego 24A" />
+                    android:text="\t\t\tMiasto \n \t\t\tul.ulica numer_budynku" />
             </LinearLayout>
 
             <LinearLayout

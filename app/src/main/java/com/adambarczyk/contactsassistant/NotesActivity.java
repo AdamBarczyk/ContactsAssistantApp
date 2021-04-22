@@ -2,6 +2,7 @@ package com.adambarczyk.contactsassistant;
 
 import android.os.Bundle;
 
+import com.adambarczyk.contactsassistant.constant.Constant;
 import com.adambarczyk.contactsassistant.datamodels.ContactModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -25,7 +26,7 @@ public class NotesActivity extends AppCompatActivity {
         tvNotes = findViewById(R.id.contact_notes_activity_text_field);
 
         // get contact from intent
-        contactModel = (ContactModel) getIntent().getSerializableExtra("oldContactModel");
+        contactModel = (ContactModel) getIntent().getSerializableExtra(Constant.OLD_CONTACT_MODEL);
 
         // load content on the screen
         loadNotes();

@@ -35,9 +35,9 @@ public class EditContactDetailsActivity extends AppCompatActivity {
 
         // If this activity is used to edit existing contact,
         // fill all views on the screen with existing contact data
-        if (getIntent().getIntExtra("addOrEdit", Constant.ERROR) == Constant.TO_EDIT) {
+        if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_EDIT) {
             ContactModel oldContactModel = (ContactModel) getIntent().
-                    getSerializableExtra("oldContactModel");
+                    getSerializableExtra(Constant.OLD_CONTACT_MODEL);
 
             etContactName.setText(oldContactModel.getName());
             etContactEmail.setText(oldContactModel.getEmail());
@@ -64,13 +64,13 @@ public class EditContactDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (getIntent().getIntExtra("addOrEdit", Constant.ERROR) == Constant.TO_ADD) {
+                if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_ADD) {
                     addContact();
-                } else if (getIntent().getIntExtra("addOrEdit", Constant.ERROR) == Constant.TO_EDIT) {
-                    updateContact((ContactModel) getIntent().getSerializableExtra("oldContactModel"));
+                } else if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_EDIT) {
+                    updateContact((ContactModel) getIntent().getSerializableExtra(Constant.OLD_CONTACT_MODEL));
                 } else {
                     Toast.makeText(EditContactDetailsActivity.this,
-                            "couldn't neither add or edit the contact", Toast.LENGTH_SHORT).show();
+                            R.string.unable_to_add_or_edit_contact, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -102,10 +102,10 @@ public class EditContactDetailsActivity extends AppCompatActivity {
 
             // show result notification to the user
             if (success) {
-                Toast.makeText(this, "Contact has been added",
+                Toast.makeText(this, R.string.contact_added_successfully,
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Couldn't add the contact",
+                Toast.makeText(this, R.string.unable_to_add_contact,
                         Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
@@ -133,19 +133,18 @@ public class EditContactDetailsActivity extends AppCompatActivity {
             // update contact in the database
             DataBaseHelper dataBaseHelper = new DataBaseHelper(EditContactDetailsActivity.this);
             boolean success = dataBaseHelper.updateContact(updatedContactModel);
-            Toast.makeText(this, updatedContactModel.toString(), Toast.LENGTH_SHORT).show();
 
             // show result notification to the user
             if (success) {
-                Toast.makeText(this, "Contact has been updated",
+                Toast.makeText(this, R.string.contact_updated,
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Couldn't update the contact",
+                Toast.makeText(this, R.string.unable_to_update_contact,
                         Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Exception:\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         finish(); // going back to previous activity

@@ -37,9 +37,9 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
 
         // If this activity is used to edit existing service,
         // fill all views on the screen with existing service data
-        if (getIntent().getIntExtra("addOrEdit", Constant.ERROR) == Constant.TO_EDIT) {
+        if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_EDIT) {
             ServiceModel serviceModel = (ServiceModel) getIntent().
-                    getSerializableExtra("oldServiceModel");
+                    getSerializableExtra(Constant.OLD_SERVICE_MODEL);
 
             etServiceName.setText(serviceModel.getServiceName());
             etServiceCost.setText(String.valueOf(serviceModel.getServiceCost()));
@@ -57,7 +57,7 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
 
         // load parent contact. There is no need to load it with UI refresh (buildUI() method),
         // because parent contact for this service won't change
-        parentContactModel = (ContactModel) getIntent().getSerializableExtra("parentContactModel");
+        parentContactModel = (ContactModel) getIntent().getSerializableExtra(Constant.PARENT_CONTACT_MODEL);
 
         // load content
         buildUI();
@@ -68,13 +68,13 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (getIntent().getIntExtra("addOrEdit", Constant.ERROR) == Constant.TO_ADD) {
+                if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_ADD) {
                     addService();
-                } else if (getIntent().getIntExtra("addOrEdit", Constant.ERROR) == Constant.TO_EDIT) {
-                    updateService((ServiceModel) getIntent().getSerializableExtra("oldServiceModel"));
+                } else if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_EDIT) {
+                    updateService((ServiceModel) getIntent().getSerializableExtra(Constant.OLD_SERVICE_MODEL));
                 } else {
                     Toast.makeText(EditServiceDetailsActivity.this,
-                            "Couldn't neither add or edit he service", Toast.LENGTH_SHORT).show();
+                            R.string.unable_to_add_or_edit_service, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -108,10 +108,10 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
 
             // show result notification to the user
             if (success) {
-                Toast.makeText(this, "Service has been added",
+                Toast.makeText(this, R.string.service_added_successfully,
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Couldn't add the service",
+                Toast.makeText(this, R.string.unable_to_add_service,
                         Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
@@ -139,18 +139,17 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
             // update contact in the database
             DataBaseHelper dataBaseHelper = new DataBaseHelper(EditServiceDetailsActivity.this);
             boolean success = dataBaseHelper.updateService(updatedServiceModel);
-            Toast.makeText(this, updatedServiceModel.toString(), Toast.LENGTH_SHORT).show();
 
             // show result notification to the user
             if (success) {
-                Toast.makeText(this, "Service has been updated",
+                Toast.makeText(this, R.string.service_updated,
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Couldn't update the service",
+                Toast.makeText(this, R.string.unable_to_update_service,
                         Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Exception:\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         finish(); // going back to previous activity

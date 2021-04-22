@@ -53,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, ContactsActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.tmp_button:
-                intent = new Intent(MainActivity.this, TmpActivity.class);
-                startActivity(intent);
-                break;
         }
     }
 }

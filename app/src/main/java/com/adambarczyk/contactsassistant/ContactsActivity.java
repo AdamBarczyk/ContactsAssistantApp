@@ -39,7 +39,7 @@ public class ContactsActivity extends AppCompatActivity {
 
         // show contacts on the screen
         if (!addButtonsForEachContact(contactsList, linearLayoutForContacts)) {
-            Toast.makeText(this, "Couldn't load contacts", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.unable_to_load_contacts, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -55,7 +55,7 @@ public class ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContactsActivity.this, EditContactDetailsActivity.class);
-                intent.putExtra("addOrEdit", Constant.TO_ADD);
+                intent.putExtra(Constant.ADD_OR_EDIT, Constant.TO_ADD);
                 startActivity(intent);
             }
         });
@@ -76,7 +76,7 @@ public class ContactsActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        if (v.getTag() == "contactButton") {
+        if (v.getTag() == Constant.CONTACT_BUTTON) {
             getMenuInflater().inflate(R.menu.contact_context_menu, menu);
 
             // v.getId() in this case returns ID of long-clicked button before menu show up
@@ -101,8 +101,8 @@ public class ContactsActivity extends AppCompatActivity {
                 // get ContactModel of contact to edit and pass it to the EditContactDetailsActivity
                 contactModel = dataBaseHelper.getContactById(contactId);
 
-                intent.putExtra("oldContactModel", contactModel);
-                intent.putExtra("addOrEdit", Constant.TO_EDIT);
+                intent.putExtra(Constant.OLD_CONTACT_MODEL, contactModel);
+                intent.putExtra(Constant.ADD_OR_EDIT, Constant.TO_EDIT);
                 startActivity(intent);
                 return true;
 
@@ -115,14 +115,14 @@ public class ContactsActivity extends AppCompatActivity {
 
                 if(dataBaseHelper.deleteContact(contactModel)) {
                     if (dataBaseHelper.deleteAllServicesForOneContact(contactId)) {
-                        Toast.makeText(this, "Contact removed succesfully",
+                        Toast.makeText(this, R.string.contact_removed_successfully,
                                 Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(this, "The contact was deleted, but its " +
-                                "services remained or were never there", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.contact_removed_but_services_not,
+                                Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(this, "Failure! \n Both contact and its services remained",
+                    Toast.makeText(this, R.string.contact_and_services_not_removed,
                             Toast.LENGTH_SHORT).show();
                 }
 
@@ -136,14 +136,9 @@ public class ContactsActivity extends AppCompatActivity {
         }
     }
 
-    public void openContactDetailActivity(View view){
-        Intent intent = new Intent(ContactsActivity.this, ContactDetailActivity.class);
-        startActivity(intent);
-    }
-
     public void openContactDetailActivity(int contactId) {
         Intent intent = new Intent(ContactsActivity.this, ContactDetailActivity.class);
-        intent.putExtra("contactId", contactId);
+        intent.putExtra(Constant.CONTACT_ID, contactId);
         startActivity(intent);
     }
 
@@ -165,7 +160,7 @@ public class ContactsActivity extends AppCompatActivity {
             button.setLayoutParams(layoutParams);
             button.setCompoundDrawables(img, null, null, null);
             button.setId(contact.getContactId());
-            button.setTag("contactButton");
+            button.setTag(Constant.CONTACT_BUTTON);
             button.setText(contact.getName());
             button.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             button.setTextSize(24);

@@ -53,7 +53,7 @@ public class ContactDetailActivity extends AppCompatActivity {
         this.averageServicesCostPerHourTextView = findViewById(R.id.average_services_cost_per_hour);
 
         // get contact using contact ID from intent
-        int contactId = getIntent().getIntExtra("contactId", Constant.ERROR);
+        int contactId = getIntent().getIntExtra(Constant.CONTACT_ID, Constant.ERROR);
         contactModel = dataBaseHelper.getContactById(contactId);
 
         // get services list
@@ -127,7 +127,7 @@ public class ContactDetailActivity extends AppCompatActivity {
 
         // pass contact data to notes activity
         Intent intent = new Intent(ContactDetailActivity.this, NotesActivity.class);
-        intent.putExtra("oldContactModel", contactModel);
+        intent.putExtra(Constant.OLD_CONTACT_MODEL, contactModel);
         startActivity(intent);
     }
 
@@ -135,14 +135,14 @@ public class ContactDetailActivity extends AppCompatActivity {
 
         // pass contact data to editing activity
         Intent intent = new Intent(ContactDetailActivity.this, EditContactDetailsActivity.class);
-        intent.putExtra("oldContactModel", contactModel);
-        intent.putExtra("addOrEdit", Constant.TO_EDIT);
+        intent.putExtra(Constant.OLD_CONTACT_MODEL, contactModel);
+        intent.putExtra(Constant.ADD_OR_EDIT, Constant.TO_EDIT);
         startActivity(intent);
     }
 
     public void openServicesPanelActivity(View view) {
         Intent intent = new Intent(ContactDetailActivity.this, ServicesPanelActivity.class);
-        intent.putExtra("contactModel", contactModel);
+        intent.putExtra(Constant.CONTACT_MODEL, contactModel);
         startActivity(intent);
     }
 }

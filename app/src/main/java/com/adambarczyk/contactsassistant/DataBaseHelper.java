@@ -188,8 +188,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // if it is not found, return false
 
         SQLiteDatabase db = this.getWritableDatabase();
-        //String queryString = "DELETE FROM " + CONTACTS + "WHERE " + COLUMN_CONTACT_ID + " = " +
-        //        contactModel.getContact_id();
 
         String queryString = "SELECT * FROM " + CONTACTS + " WHERE " + COLUMN_CONTACT_ID + " = ?";
         String[] queryArgs = new String[] {String.valueOf(contactModel.getContactId())};
