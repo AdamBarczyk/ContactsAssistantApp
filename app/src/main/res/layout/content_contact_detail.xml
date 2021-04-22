@@ -90,12 +90,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/address"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/contactDetailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:text="\t\t\tOlkusz \n \t\t\tul.Króla Kazimierza Wielkiego 24A" />
             </LinearLayout>
 
@@ -103,7 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="10dp"
+                android:onClick="openContactNotesActivity">
 
                 <TextView
                     android:id="@+id/textView8"
@@ -111,28 +113,38 @@
                     android:layout_height="wrap_content"
                     android:text="@string/notes"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="24sp"
+                    android:onClick="openContactNotesActivity"/>
 
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="130dp">
+                    android:layout_height="90dp"
+                    android:onClick="openContactNotesActivity">
 
                     <TextView
                         android:id="@+id/contactDetailNotes"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textSize="18sp"
                         android:clickable="true"
                         android:focusable="true"
                         android:onClick="openContactNotesActivity"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                        android:text="m dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
                 </androidx.core.widget.NestedScrollView>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/open_services_panel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_services_panel_button"
+                android:onClick="openServicesPanelActivity"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="5dp">
 
 
                 <TextView
@@ -145,7 +157,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/servicesCount"
+                    android:id="@+id/services_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -172,7 +184,7 @@
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/servicesCost"
+                    android:id="@+id/all_services_cost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -183,12 +195,59 @@
                     android:text="1250zł"/>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/open_services_panel_button"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/open_services_panel_button"
-                android:onClick="openServicesPanelActivity"/>
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/averageServiceCostLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/average_service_cost"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/average_service_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="end"
+                    android:text="1250zł"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/servicesCostPerHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/services_cost_per_hour_label"
+                    android:textColor="#000000"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/average_services_cost_per_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="end"
+                    android:text="1250zł"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

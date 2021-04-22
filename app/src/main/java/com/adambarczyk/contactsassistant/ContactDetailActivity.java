@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.adambarczyk.contactsassistant.constant.Constant;
 import com.adambarczyk.contactsassistant.datamodels.ContactModel;
 import com.adambarczyk.contactsassistant.datamodels.ServiceModel;
+import com.adambarczyk.contactsassistant.utilities.MathFunctions;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,11 +19,19 @@ import java.util.List;
 
 public class ContactDetailActivity extends AppCompatActivity {
 
+
+    // TextViews for contact's data
     private TextView contactNameTextView;
     private TextView contactPhoneTextView;
     private TextView contactEmailTextView;
     private TextView contactAddressTextView;
     private TextView contactNotesTextView;
+
+    // TextViews for contact's services data
+    private TextView servicesCountTextView;
+    private TextView allServicesCostTextView;
+    private TextView averageServicesCostPerHourTextView;
+    private TextView averageServiceCostTextView;
 
     private DataBaseHelper dataBaseHelper;
 
@@ -38,10 +47,17 @@ public class ContactDetailActivity extends AppCompatActivity {
         this.contactEmailTextView = findViewById(R.id.contactDetailEmail);
         this.contactAddressTextView = findViewById(R.id.contactDetailAddress);
         this.contactNotesTextView = findViewById(R.id.contactDetailNotes);
+        this.servicesCountTextView = findViewById(R.id.services_count);
+        this.allServicesCostTextView = findViewById(R.id.all_services_cost);
+        this.averageServiceCostTextView = findViewById(R.id.average_service_cost);
+        this.averageServicesCostPerHourTextView = findViewById(R.id.average_services_cost_per_hour);
 
         // get contact using contact ID from intent
         int contactId = getIntent().getIntExtra("contactId", Constant.ERROR);
         contactModel = dataBaseHelper.getContactById(contactId);
+
+        // get services list
+        servicesList = loadServicesFromDatabase();
 
         // load content on the screen
         if (!loadContactData()) {
@@ -61,9 +77,6 @@ public class ContactDetailActivity extends AppCompatActivity {
 
         // load content
         buildUI();
-
-        // get services list
-        servicesList = loadServicesFromDatabase();
     }
 
     @Override
@@ -79,11 +92,26 @@ public class ContactDetailActivity extends AppCompatActivity {
         if (contactModel != null) {
 
             // show contact data on screen
+
             contactNameTextView.setText(contactModel.getName());
             contactPhoneTextView.setText(String.valueOf(contactModel.getPhone()));
             contactEmailTextView.setText(contactModel.getEmail());
             contactAddressTextView.setText(contactModel.getAddress());
             contactNotesTextView.setText(contactModel.getNotes());
+
+
+            // show contact's services data on screen
+
+            servicesCountTextView.setText(String.valueOf(servicesList.size()));
+            allServicesCostTextView.setText(
+                    String.valueOf(MathFunctions.getCostOfAllServices(servicesList))
+            );
+            averageServiceCostTextView.setText(
+                    String.valueOf(MathFunctions.getAverageCostPerServiceOfAllServices(servicesList))
+            );
+            averageServicesCostPerHourTextView.setText(
+                    String.valueOf(MathFunctions.getAverageCostPerHourOfAllServices(servicesList))
+            );
 
         } else {
             return false;

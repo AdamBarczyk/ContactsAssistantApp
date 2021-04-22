@@ -20,6 +20,8 @@
     <string name="notes">Notatki</string>
     <string name="services_count_label">Ilość usług:</string>
     <string name="services_cost_label">Koszt usług:</string>
+    <string name="services_cost_per_hour_label">Średni koszt usług/h:</string>
+    <string name="average_service_cost">Średni koszt usługi:</string>
     <string name="open_services_panel_button">Otwórz panel usług</string>
 
     <!-- Strings for editContactDetails Activity -->
