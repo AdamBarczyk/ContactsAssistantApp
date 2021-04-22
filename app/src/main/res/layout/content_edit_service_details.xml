@@ -18,46 +18,37 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/editContactName"
+                android:id="@+id/editServiceName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="@string/contact_name" />
+                android:inputType="textMultiLine"
+                android:hint="@string/service_name" />
 
             <EditText
-                android:id="@+id/editPhoneNumber"
+                android:id="@+id/editServiceCost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="phone"
-                android:hint="@string/telephone_number"/>
+                android:inputType="number"
+                android:hint="@string/service_cost"/>
 
             <EditText
-                android:id="@+id/editEmailAddress"
+                android:id="@+id/editServiceTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textEmailAddress"
-                android:hint="@string/email_address"/>
+                android:inputType="number"
+                android:hint="@string/service_time"/>
 
             <EditText
-                android:id="@+id/editAddress"
+                android:id="@+id/editServiceInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:hint="@string/address"/>
-
-            <EditText
-                android:id="@+id/editContactNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:hint="@string/notes"/>
+                android:hint="@string/service_info"/>
         </LinearLayout>
     </ScrollView>
 
@@ -69,17 +60,18 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/btnSaveContact"
+            android:id="@+id/btnSaveService"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/save_button_name" />
 
         <Button
-            android:id="@+id/btnCancelContact"
+            android:id="@+id/btnCancelService"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/cancel_button_name" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

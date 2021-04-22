@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.adambarczyk.contactsassistant.constant.Constant;
 import com.adambarczyk.contactsassistant.datamodels.ContactModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -18,7 +19,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
@@ -31,11 +31,13 @@ public class ContactsActivity extends AppCompatActivity {
 
 
     private void buildUI() {
-        // load content
-
         linearLayoutForContacts = findViewById(R.id.linearLayoutForContacts);
         linearLayoutForContacts.removeAllViews(); // clear layout before loading all contacts again
+
+        // load contacts from database
         List<ContactModel> contactsList = loadContactsFromDatabase();
+
+        // show contacts on the screen
         if (!addButtonsForEachContact(contactsList, linearLayoutForContacts)) {
             Toast.makeText(this, "Couldn't load contacts", Toast.LENGTH_SHORT).show();
         }
@@ -53,7 +55,7 @@ public class ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ContactsActivity.this, EditContactDetailsActivity.class);
-                intent.putExtra("addOrEdit", EditContactDetailsActivity.TO_ADD);
+                intent.putExtra("addOrEdit", Constant.TO_ADD);
                 startActivity(intent);
             }
         });
@@ -75,7 +77,7 @@ public class ContactsActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         if (v.getTag() == "contactButton") {
-            getMenuInflater().inflate(R.menu.context_menu, menu);
+            getMenuInflater().inflate(R.menu.contact_context_menu, menu);
 
             // v.getId() in this case returns ID of long-clicked button before menu show up
             // Each button has got the same ID as the contact "inside" this button,
@@ -100,7 +102,7 @@ public class ContactsActivity extends AppCompatActivity {
                 contactModel = dataBaseHelper.getContactById(contactId);
 
                 intent.putExtra("oldContactModel", contactModel);
-                intent.putExtra("addOrEdit", EditContactDetailsActivity.TO_EDIT);
+                intent.putExtra("addOrEdit", Constant.TO_EDIT);
                 startActivity(intent);
                 return true;
 
@@ -108,8 +110,6 @@ public class ContactsActivity extends AppCompatActivity {
             // deleting contact using context menu
 
             case R.id.delete_contact_context_menu:
-                Toast.makeText(this, "usuwanie dziala", Toast.LENGTH_SHORT).show();
-
 
                 contactModel = dataBaseHelper.getContactById(contactId);
 
@@ -126,10 +126,11 @@ public class ContactsActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
 
-                // refresh layout after deleting
+                // refresh UI after deleting
                 onRestart();
 
                 return true;
+
             default:
                 return super.onContextItemSelected(item);
         }

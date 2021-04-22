@@ -32,11 +32,29 @@
     <string name="title_activity_notes">Notatki</string>
 
     <!-- Strings for services -->
-    <string name="title_activity_services_panel">Zlecenia</string>
-    <string name="title_activity_service_detail">Szczegóły zlecenia</string>
+    <string name="title_activity_services_panel">Usługi</string>
+    <string name="title_activity_service_detail">Szczegóły usługi</string>
     <string name="service_cost_label">Koszt:</string>
 
     <!-- Strings for menus -->
     <string name="deleteContact">Usuń</string>
     <string name="editContact">Edytuj</string>
+
+    <!-- Strings for editServiceDetails and serviceDetail Activity -->
+    <string name="title_activity_edit_service_details">Edycja usługi</string>
+    <string name="service_name">Nazwa usługi</string>
+    <string name="service_detail_name">Nazwa:</string>
+    <string name="service_info">Opis usługi</string>
+    <string name="service_detail_info">Brak informacji o usłudze</string>
+    <string name="service_cost">Koszt usługi (zł)</string>
+    <string name="service_detail_cost">Koszt:</string>
+    <string name="service_time">Czas wykonania usługi (min)</string>
+    <string name="service_detail_time">Czas (min):</string>
+    <string name="no_data">b/d</string>
+
+    <!-- general strings -->
+    <string name="something_went_wrong_message">Coś poszło nie tak</string>
+    <string name="unable_to_load_data_message">Nie udało się wczytać danych</string>
+    <string name="too_large_number_message">Co najmniej jedna z wprowadzonych liczb jest zbyt duża</string>
+    <string name="currency">zł</string>
 </resources>

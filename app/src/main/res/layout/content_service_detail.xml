@@ -1,62 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
-        android:id="@+id/cost_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/scroll_view">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/service_cost_label"
-            android:textSize="36sp"
-            android:textColor="@color/font_color_black"/>
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1250zł"
-            android:textSize="36sp"
-            android:textColor="@color/font_color_black"
-            android:textAlignment="center"/>
-    </LinearLayout>
-
-    <ScrollView
-        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/cost_layout"
-        app:layout_constraintBottom_toTopOf="@id/edit_button">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/edit_button_service_detail">
 
         <LinearLayout
+            android:id="@+id/service_detail_name_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque velit dui, pulvinar eget mattis a, hendrerit eget nunc. Aliquam molestie cursus urna bibendum aliquet. Morbi vitae metus a nisl porta laoreet. Integer ac tortor vitae nibh sollicitudin rhoncus a ut velit. Donec nec gravida massa. Proin maximus pellentesque mi, cursus ultrices nulla maximus in. Nam facilisis a ipsum sed vulputate. Sed tempor, augue et vestibulum dapibus, purus ante varius ante, at dapibus tellus libero sit amet elit." />
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/service_detail_name"
+                android:textColor="@color/font_color_black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/service_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/no_data"
+                android:textAlignment="center"
+                android:textColor="@color/font_color_black"
+                android:textSize="24sp" />
         </LinearLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/service_detail_cost"
+                android:textColor="@color/font_color_black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/service_detail_cost"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/no_data"
+                android:textAlignment="textEnd"
+                android:textColor="@color/font_color_black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/service_detail_time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/service_detail_time"
+                android:textColor="@color/font_color_black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/service_detail_time"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/no_data"
+                android:textAlignment="textEnd"
+                android:textColor="@color/font_color_black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/service_detail_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:textSize="18sp"
+                    android:text="@string/service_detail_info" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/edit_button"
+        android:id="@+id/edit_button_service_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/edit_button_name"
+        android:onClick="openEditServiceDetailActivity"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

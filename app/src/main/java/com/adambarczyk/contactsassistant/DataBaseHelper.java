@@ -37,7 +37,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // constructor
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "Database.db", null, 3);
+        super(context, "Database.db", null, 5);
     }
 
 
@@ -58,8 +58,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 COLUMN_CONTACT_ID + " INTEGER NOT NULL, " +
                 COLUMN_SERVICE_INFO + " TEXT, " +
                 COLUMN_SERVICE_COST + " INTEGER, " +
-                COLUMN_SERVICE_NAME + "TEXT, " +
-                COLUMN_SERVICE_TIME + "FLOAT, " +
+                COLUMN_SERVICE_NAME + " TEXT, " +
+                COLUMN_SERVICE_TIME + " INTEGER, " +
                 "FOREIGN KEY (" + COLUMN_CONTACT_ID + ") REFERENCES " +
                 CONTACTS + " (" + COLUMN_CONTACT_ID + "))");
     }
@@ -336,7 +336,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String serviceInfo = cursor.getString(2);
             int serviceCost = cursor.getInt(3);
             String serviceName = cursor.getString(4);
-            float serviceTime = cursor.getFloat(5);
+            int serviceTime = cursor.getInt(5);
 
             // save loaded data (and serviceId) as object of ServiceModel class
             serviceModel = new ServiceModel(serviceId, contactId, serviceInfo,
@@ -444,7 +444,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String serviceInfo = cursor.getString(2);
                 int serviceCost = cursor.getInt(3);
                 String serviceName = cursor.getString(4);
-                float serviceTime = cursor.getFloat(5);
+                int serviceTime = cursor.getInt(5);
 
                 ServiceModel newService = new ServiceModel(serviceID, contactID, serviceInfo,
                         serviceCost, serviceName, serviceTime);

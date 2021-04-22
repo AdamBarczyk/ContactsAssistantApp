@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".EditServiceDetailsActivity"
+            android:label="@string/title_activity_edit_service_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".ServiceDetailActivity"
             android:label="@string/title_activity_service_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditContactDetailsActivity"
             android:label="@string/title_activity_edit_contact_details"

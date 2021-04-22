@@ -1,17 +1,19 @@
 package com.adambarczyk.contactsassistant.datamodels;
 
-public class ServiceModel {
+import java.io.Serializable;
+
+public class ServiceModel implements Serializable {
     private int serviceId;
     private int contactId;
     private String serviceInfo;
     private int serviceCost;
     private String serviceName;
-    private float serviceTime;
+    private int serviceTime;
 
     // constructors
 
     public ServiceModel(int serviceId, int contactId, String serviceInfo,
-                        int serviceCost, String serviceName, float serviceTime) {
+                        int serviceCost, String serviceName, int serviceTime) {
         this.serviceId = serviceId;
         this.contactId = contactId;
         this.serviceInfo = serviceInfo;
@@ -82,11 +84,11 @@ public class ServiceModel {
         this.serviceName = serviceName;
     }
 
-    public float getServiceTime() {
+    public int getServiceTime() {
         return serviceTime;
     }
 
-    public void setServiceTime(float serviceTime) {
+    public void setServiceTime(int serviceTime) {
         this.serviceTime = serviceTime;
     }
 }
