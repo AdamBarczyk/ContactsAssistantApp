@@ -60,12 +60,12 @@
     <string name="unable_to_load_data_message">Nie udało się wczytać danych</string>
     <string name="too_large_number_message">Co najmniej jedna z wprowadzonych liczb jest zbyt duża</string>
 
-    <string name="contact_removed_but_services_not">Błąd! Kontakt został usunięty, ale nie udało się usunać jego usług</string>
-    <string name="contact_and_services_not_removed">Błąd! Ani konta ani jego usługi nie zostały usunięte</string>
+    <string name="contact_removed_but_services_not">Błąd! Kontakt został usunięty, ale nie udało się usunać jego usług(jeśli istniały)</string>
+    <string name="contact_and_services_not_removed">Błąd! Ani kontakt ani jego usługi nie zostały usunięte</string>
     <string name="unable_to_add_or_edit_contact">Nie udało się dodać lub edytować kontaktu</string>
     <string name="unable_to_add_or_edit_service">Nie udało się dodać lub edytować usługi</string>
 
-    <string name="contact_removed_successfully">Kontakt usunięty pomyślnie</string>
+    <string name="contact_removed_successfully">Kontakt oraz jego usługi zostały usunięte pomyślnie</string>
     <string name="contact_added_successfully">Kontakt dodany pomyślnie</string>
     <string name="unable_to_add_contact">Nie udało się dodać kontaktu</string>
     <string name="contact_updated">Kontakt został zaktualizowany</string>
