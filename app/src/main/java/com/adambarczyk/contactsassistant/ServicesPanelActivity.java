@@ -1,6 +1,7 @@
 package com.adambarczyk.contactsassistant;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.adambarczyk.contactsassistant.constant.Constant;
@@ -181,18 +182,24 @@ public class ServicesPanelActivity extends AppCompatActivity {
             textView.setTextSize(18);
 
             // create button
+
+            //drawable button background
+            Drawable background = getResources().getDrawable(R.drawable.button_background);
+
             Button button = new Button(this);
             LinearLayout.LayoutParams btnLayoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     1.0f
             );
+            btnLayoutParams.setMargins(0, 20, 0, 0);
             button.setId(service.getServiceId());
             button.setTag(Constant.SERVICE_BUTTON);
             button.setLayoutParams(btnLayoutParams);
-            button.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+            button.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             button.setText(service.getServiceName());
             button.setTextSize(18);
+            button.setBackground(background);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

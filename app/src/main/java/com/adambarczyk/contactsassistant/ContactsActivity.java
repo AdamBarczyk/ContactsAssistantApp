@@ -177,16 +177,23 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-            Drawable img = getResources().getDrawable(R.drawable.ic_baseline_account_circle_24, getTheme());
-            img.setBounds(0, 0, 200, 200);
+            layoutParams.setMargins(0, 20, 0, 0);
+
+            // drawable icon
+            Drawable icon = getResources().getDrawable(R.drawable.ic_baseline_account_circle_24, getTheme());
+            icon.setBounds(0, 0, 200, 200);
+
+            //drawable button background
+            Drawable background = getResources().getDrawable(R.drawable.button_background);
 
             button.setLayoutParams(layoutParams);
-            button.setCompoundDrawables(img, null, null, null);
+            button.setCompoundDrawables(icon, null, null, null);
             button.setId(contact.getContactId());
             button.setTag(Constant.CONTACT_BUTTON);
             button.setText(contact.getName());
             button.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             button.setTextSize(24);
+            button.setBackground(background);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

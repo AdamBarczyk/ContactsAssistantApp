@@ -135,8 +135,9 @@
 
             <Button
                 android:id="@+id/open_services_panel_button"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
                 android:text="@string/open_services_panel_button"
                 android:onClick="openServicesPanelActivity"/>
 
@@ -264,6 +265,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/button_background"
             android:text="@string/edit_button_name"
             android:onClick="openEditContactDetailsActivity"/>
     </LinearLayout>

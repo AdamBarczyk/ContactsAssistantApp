@@ -22,7 +22,7 @@
     <string name="services_cost_label">Koszt usług:</string>
     <string name="services_cost_per_hour_label">Średni koszt usług/h:</string>
     <string name="average_service_cost">Średni koszt usługi:</string>
-    <string name="open_services_panel_button">Otwórz panel usług</string>
+    <string name="open_services_panel_button">Przejdź do usług</string>
     <string name="empty_contact_name">Nazwa kontaktu nie może być pusta!</string>
 
     <!-- Strings for editContactDetails Activity -->
@@ -58,6 +58,8 @@
     <string name="service_detail_time">Czas (min):</string>
     <string name="no_data">b/d</string>
     <string name="empty_service_name">Nazwa usługi nie może być pusta!</string>
+    <string name="empty_service_cost">Koszt usługi nie może być pusty!</string>
+    <string name="empty_service_time">Czas wykonania usługi nie może być pusty!</string>
 
     <!-- general strings -->
     <string name="something_went_wrong_message">Coś poszło nie tak</string>

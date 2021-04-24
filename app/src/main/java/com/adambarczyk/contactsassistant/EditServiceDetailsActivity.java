@@ -103,9 +103,17 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
         if (etServiceName.getText().toString().trim().isEmpty()) {
             Toast.makeText(this, R.string.empty_service_name, Toast.LENGTH_SHORT).show();
             return false;
-        } else {
-            return true;
         }
+        else if (etServiceCost.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, R.string.empty_service_cost, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (etServiceTime.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, R.string.empty_service_time, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     private void addService() {

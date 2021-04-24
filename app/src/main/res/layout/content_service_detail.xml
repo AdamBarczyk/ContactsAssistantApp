@@ -120,6 +120,7 @@
         android:id="@+id/edit_button_service_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:text="@string/edit_button_name"
         android:onClick="openEditServiceDetailActivity"
         app:layout_constraintBottom_toBottomOf="parent"/>

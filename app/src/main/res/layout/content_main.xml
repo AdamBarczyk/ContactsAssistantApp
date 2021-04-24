@@ -15,5 +15,6 @@
         android:onClick="changeActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp" />
+        android:layout_marginTop="270dp"
+        android:background="@drawable/button_background"/>
 </RelativeLayout>
