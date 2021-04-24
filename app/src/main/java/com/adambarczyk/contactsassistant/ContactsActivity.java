@@ -13,20 +13,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsActivity extends AppCompatActivity {
+public class ContactsActivity extends AppCompatActivity implements Filterable {
 
     LinearLayout linearLayoutForContacts;
+    SearchView contactsSearchView;
 
     // id of long-clicked contact button (when user tries to open floating context menu)
     private int contactId;
+    private List<ContactModel> contactsList;
+    private List<ContactModel> contactsListFiltered;
 
 
 
@@ -35,10 +44,24 @@ public class ContactsActivity extends AppCompatActivity {
         linearLayoutForContacts.removeAllViews(); // clear layout before loading all contacts again
 
         // load contacts from database
-        List<ContactModel> contactsList = loadContactsFromDatabase();
+        contactsList = loadContactsFromDatabase();
+
+        // create list for contacts filtered in SearchView
+        contactsListFiltered = new ArrayList<>(contactsList);
 
         // show contacts on the screen
-        if (!addButtonsForEachContact(contactsList, linearLayoutForContacts)) {
+        if (!addButtonsForEachContact(contactsListFiltered, linearLayoutForContacts)) {
+            Toast.makeText(this, R.string.unable_to_load_contacts, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void refreshUI() {
+        // refreshes contacts on the screen to match with SearchView
+
+        linearLayoutForContacts.removeAllViews();
+
+        // show contacts on the screen
+        if (!addButtonsForEachContact(contactsListFiltered, linearLayoutForContacts)) {
             Toast.makeText(this, R.string.unable_to_load_contacts, Toast.LENGTH_SHORT).show();
         }
     }
@@ -177,6 +200,74 @@ public class ContactsActivity extends AppCompatActivity {
             // add context menu for button
             registerForContextMenu(button);
         }
+        return true;
+    }
+
+
+    // Methods to handle contacts SearchView
+
+    @Override
+    public Filter getFilter() {
+        return contactsFilter;
+    }
+
+    private Filter contactsFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            // Invoked in the worker thread, so application won't freeze
+
+            List<ContactModel> filteredList = new ArrayList<>();
+
+            // constraint is a phrase written by user in the SearchView (as a CharSequence, not a String)
+            if (constraint == null || constraint.length() == 0) {
+                // add all contacts to the filteredList, because user didn't typed anything
+                filteredList.addAll(contactsList);
+            } else {
+                // .trim() removes white spaces at the start and at the end of the String
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (ContactModel contact : contactsList) {
+                    if (contact.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(contact);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            // Invoked in the UI thread to publish the filtering results in the user interface.
+
+            contactsListFiltered.clear();
+            contactsListFiltered.addAll((List) results.values);
+            refreshUI();
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();  // now can use searchView like normal text field
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return true;
     }
 }

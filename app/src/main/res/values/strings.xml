@@ -41,6 +41,7 @@
     <!-- Strings for menus -->
     <string name="deleteContact">Usuń</string>
     <string name="editContact">Edytuj</string>
+    <string name="search_title">Wyszukaj</string>
 
     <!-- Strings for editServiceDetails and serviceDetail Activity -->
     <string name="title_activity_edit_service_details">Edycja usługi</string>
