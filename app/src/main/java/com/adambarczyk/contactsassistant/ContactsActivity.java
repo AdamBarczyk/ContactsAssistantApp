@@ -220,13 +220,15 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
 
             // constraint is a phrase written by user in the SearchView (as a CharSequence, not a String)
             if (constraint == null || constraint.length() == 0) {
+
                 // add all contacts to the filteredList, because user didn't typed anything
                 filteredList.addAll(contactsList);
             } else {
+
                 // .trim() removes white spaces at the start and at the end of the String
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (ContactModel contact : contactsList) {
-                    if (contact.getName().toLowerCase().contains(filterPattern)) {
+                    if (contact.getName().toLowerCase().startsWith(filterPattern)) {
                         filteredList.add(contact);
                     }
                 }
