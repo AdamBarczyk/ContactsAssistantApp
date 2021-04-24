@@ -41,7 +41,11 @@ public class EditContactDetailsActivity extends AppCompatActivity {
 
             etContactName.setText(oldContactModel.getName());
             etContactEmail.setText(oldContactModel.getEmail());
-            etContactPhone.setText(String.valueOf(oldContactModel.getPhone()));
+            /* if phone number is equal to -1(ERROR), it means that contact hasn't got phone number,
+             so there is no need to show -1 value to the user*/
+            if (oldContactModel.getPhone() != Constant.ERROR) {
+                etContactPhone.setText(String.valueOf(oldContactModel.getPhone()));
+            }
             etContactAddress.setText(oldContactModel.getAddress());
             etContactNotes.setText(oldContactModel.getNotes());
         } else {
@@ -99,9 +103,16 @@ public class EditContactDetailsActivity extends AppCompatActivity {
         if (etContactName.getText().toString().trim().isEmpty()) {
             Toast.makeText(this, R.string.empty_contact_name, Toast.LENGTH_SHORT).show();
             return false;
-        } else {
+        }
+
+        // Check if user provided contactPhone. If not, set contactPhone to -1, because
+        // the ContactModel class requires phone as int value.
+        else if (etContactPhone.getText().toString().trim().isEmpty()) {
+            etContactPhone.setText(String.valueOf(Constant.ERROR));
             return true;
         }
+
+        return true;
     }
 
     private void addContact() {

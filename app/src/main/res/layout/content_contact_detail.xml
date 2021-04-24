@@ -52,8 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:textSize="24sp"
-                    android:text="+48 123 456 789" />
+                    android:textSize="24sp" />
 
             </LinearLayout>
 
