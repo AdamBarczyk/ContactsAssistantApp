@@ -9,6 +9,8 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toTopOf="@id/action_layout"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -17,47 +19,72 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/contact_name"
+                android:textColor="@color/font_color_black"/>
+
             <EditText
                 android:id="@+id/editContactName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="@string/contact_name" />
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/telephone_number"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone"
-                android:hint="@string/telephone_number"/>
+                android:inputType="phone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/email_address"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:hint="@string/email_address"/>
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/address"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:hint="@string/address"/>
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/notes"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editContactNotes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:hint="@string/notes"/>
+                android:inputType="textMultiLine" />
         </LinearLayout>
     </ScrollView>
 

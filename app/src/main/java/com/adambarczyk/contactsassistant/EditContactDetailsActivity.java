@@ -44,6 +44,8 @@ public class EditContactDetailsActivity extends AppCompatActivity {
             etContactPhone.setText(String.valueOf(oldContactModel.getPhone()));
             etContactAddress.setText(oldContactModel.getAddress());
             etContactNotes.setText(oldContactModel.getNotes());
+        } else {
+            setTitle(R.string.title_activity_add_contact_details);
         }
     }
 

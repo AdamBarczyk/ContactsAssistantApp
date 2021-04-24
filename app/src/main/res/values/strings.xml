@@ -26,6 +26,7 @@
 
     <!-- Strings for editContactDetails Activity -->
     <string name="title_activity_edit_contact_details">Edycja kontaktu</string>
+    <string name="title_activity_add_contact_details">Dodawanie kontaktu</string>
     <string name="contact_name">Imię i nazwisko</string>
     <string name="telephone_number">Telefon</string>
     <string name="email_address">Adres e-mail</string>
@@ -45,6 +46,7 @@
 
     <!-- Strings for editServiceDetails and serviceDetail Activity -->
     <string name="title_activity_edit_service_details">Edycja usługi</string>
+    <string name="title_activity_add_service_details">Dodawanie usługi</string>
     <string name="service_name">Nazwa usługi</string>
     <string name="service_detail_name">Nazwa:</string>
     <string name="service_info">Opis usługi</string>

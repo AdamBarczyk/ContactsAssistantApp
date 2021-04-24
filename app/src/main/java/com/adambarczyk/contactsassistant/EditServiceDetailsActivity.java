@@ -45,6 +45,8 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
             etServiceCost.setText(String.valueOf(serviceModel.getServiceCost()));
             etServiceTime.setText(String.valueOf(serviceModel.getServiceTime()));
             etServiceInfo.setText(serviceModel.getServiceInfo());
+        } else {
+            setTitle(R.string.title_activity_add_service_details);
         }
     }
 

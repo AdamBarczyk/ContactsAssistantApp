@@ -9,6 +9,8 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toTopOf="@id/action_layout"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -17,29 +19,54 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/service_name"
+                android:textColor="@color/font_color_black"/>
+
             <EditText
                 android:id="@+id/editServiceName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textMultiLine"
-                android:hint="@string/service_name" />
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/service_cost"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editServiceCost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
-                android:hint="@string/service_cost"/>
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/service_time"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editServiceTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
-                android:hint="@string/service_time"/>
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/service_info"
+                android:textColor="@color/font_color_black"/>
 
             <EditText
                 android:id="@+id/editServiceInfo"
@@ -47,8 +74,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:hint="@string/service_info"/>
+                android:inputType="textMultiLine" />
         </LinearLayout>
     </ScrollView>
 
