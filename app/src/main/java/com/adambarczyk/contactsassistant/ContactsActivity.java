@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.adambarczyk.contactsassistant.constant.Constant;
 import com.adambarczyk.contactsassistant.datamodels.ContactModel;
+import com.adambarczyk.contactsassistant.utilities.SortFunctions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
@@ -45,6 +46,9 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
 
         // load contacts from database
         contactsList = loadContactsFromDatabase();
+
+        // sort contacts alphabetically by contact name
+        SortFunctions.sortContactsListInAlphabeticalOrder(contactsList);
 
         // create list for contacts filtered in SearchView
         contactsListFiltered = new ArrayList<>(contactsList);

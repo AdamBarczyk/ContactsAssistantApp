@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.adambarczyk.contactsassistant.constant.Constant;
 import com.adambarczyk.contactsassistant.datamodels.ContactModel;
 import com.adambarczyk.contactsassistant.datamodels.ServiceModel;
+import com.adambarczyk.contactsassistant.utilities.SortFunctions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,9 @@ public class ServicesPanelActivity extends AppCompatActivity {
 
         // load services for parent contact
         servicesList = loadServicesFromDatabase();
+
+        // sort services alphabetically by service name
+        SortFunctions.sortServicesListInAlphabeticalOrder(servicesList);
 
         // show services on the screen
         if (!addViewForEachService(servicesList)) {
