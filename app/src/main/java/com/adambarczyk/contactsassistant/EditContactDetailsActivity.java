@@ -67,9 +67,16 @@ public class EditContactDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_ADD) {
-                    addContact();
+                    if (checkConditions()) {
+                        addContact();
+                    }
+
                 } else if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_EDIT) {
-                    updateContact((ContactModel) getIntent().getSerializableExtra(Constant.OLD_CONTACT_MODEL));
+                    if (checkConditions()) {
+                        updateContact((ContactModel) getIntent().
+                                getSerializableExtra(Constant.OLD_CONTACT_MODEL));
+                    }
+
                 } else {
                     Toast.makeText(EditContactDetailsActivity.this,
                             R.string.unable_to_add_or_edit_contact, Toast.LENGTH_SHORT).show();
@@ -83,6 +90,18 @@ public class EditContactDetailsActivity extends AppCompatActivity {
                 finish(); // going back to previous activity
             }
         });
+    }
+
+    private boolean checkConditions() {
+        // Checks if user provided new contact name or left it empty.
+        // If user provided the contact name, function returns true. Otherwise returns false.
+
+        if (etContactName.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, R.string.empty_contact_name, Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private void addContact() {

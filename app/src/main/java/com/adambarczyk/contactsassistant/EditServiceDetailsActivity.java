@@ -71,9 +71,16 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_ADD) {
-                    addService();
+                    if (checkConditions()) {
+                        addService();
+                    }
+
                 } else if (getIntent().getIntExtra(Constant.ADD_OR_EDIT, Constant.ERROR) == Constant.TO_EDIT) {
-                    updateService((ServiceModel) getIntent().getSerializableExtra(Constant.OLD_SERVICE_MODEL));
+                    if (checkConditions()) {
+                        updateService((ServiceModel) getIntent().
+                                getSerializableExtra(Constant.OLD_SERVICE_MODEL));
+                    }
+
                 } else {
                     Toast.makeText(EditServiceDetailsActivity.this,
                             R.string.unable_to_add_or_edit_service, Toast.LENGTH_SHORT).show();
@@ -87,6 +94,18 @@ public class EditServiceDetailsActivity extends AppCompatActivity {
                 finish(); // going back to previous activity
             }
         });
+    }
+
+    private boolean checkConditions() {
+        // Checks if user provided new contact name or left it empty.
+        // If user provided the contact name, function returns true. Otherwise returns false.
+
+        if (etServiceName.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, R.string.empty_service_name, Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private void addService() {
