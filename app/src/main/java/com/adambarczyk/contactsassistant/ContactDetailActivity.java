@@ -97,7 +97,8 @@ public class ContactDetailActivity extends AppCompatActivity {
             /* if phone number is equal to -1(ERROR), it means that contact hasn't got phone number,
              so there is no need to show -1 value to the user*/
             if (contactModel.getPhone() != Constant.ERROR) {
-                contactPhoneTextView.setText(String.valueOf(contactModel.getPhone()));
+                String phoneNumber = Constant.PL_PHONE_CODE + contactModel.getPhone();
+                contactPhoneTextView.setText(phoneNumber);
             }
             contactEmailTextView.setText(contactModel.getEmail());
             contactAddressTextView.setText(contactModel.getAddress());

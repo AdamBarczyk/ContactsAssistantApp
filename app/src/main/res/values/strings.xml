@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">ContactsAssistant</string>
+    
+    <!-- menu strings -->
     <string name="action_settings">Ustawienia</string>
+    <string name="sort_in_alphabetical_order">Sortowanie alfabetyczne: A-Z</string>
+    <string name="sort_by_services_count_ascending_order">Sortowanie wg ilości zleceń: A-Z</string>
+    <string name="sort_by_services_count_descending_order">Sortowanie wg ilości zleceń: Z-A</string>
+    <string name="sort_by_services_cost_ascending_order">Sortowanie wg kosztu zleceń: A-Z</string>
+    <string name="sort_by_services_cost_descending_order">Sortowanie wg kosztu zleceń: Z-A</string>
 
     <!-- Strings for main activity -->
     <string name="contacts">Kontakty</string>

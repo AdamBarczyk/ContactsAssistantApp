@@ -18,4 +18,14 @@ public class Constant {
     // Constant tags and names for UI elements
     public static final String CONTACT_BUTTON = "contactButton";
     public static final String SERVICE_BUTTON = "serviceButton";
+
+    // Constants for area code telephone numbers
+    public static final String PL_PHONE_CODE = "+48";
+
+    // Constants for sorting contacts
+    public static final int SORT_IN_ALPHABETICAL_ORDER = 0;
+    public static final int SORT_BY_SERVICES_COUNT_ASCENDING_ORDER = 1;
+    public static final int SORT_BY_SERVICES_COUNT_DESCENDING_ORDER = 2;
+    public static final int SORT_BY_SERVICES_ALL_SERVICES_COST_ASCENDING_ORDER = 3;
+    public static final int SORT_BY_SERVICES_COST_DESCENDING_ORDER = 4;
 }

@@ -3,10 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/sort_in_alphabetical_order"
+        android:orderInCategory="0"
+        android:title="@string/sort_in_alphabetical_order"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_by_services_count_ascending_order"
+        android:orderInCategory="1"
+        android:title="@string/sort_by_services_count_ascending_order"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_by_services_count_descending_order"
+        android:orderInCategory="2"
+        android:title="@string/sort_by_services_count_descending_order"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_by_services_cost_ascending_order"
+        android:orderInCategory="3"
+        android:title="@string/sort_by_services_cost_ascending_order"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_by_services_cost_descending_order"
+        android:orderInCategory="4"
+        android:title="@string/sort_by_services_cost_descending_order"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"
         android:title="@string/search_title"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.widget.SearchView"/>
+
+
 
 </menu>

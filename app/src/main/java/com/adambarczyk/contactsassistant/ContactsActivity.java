@@ -31,12 +31,14 @@ import java.util.List;
 public class ContactsActivity extends AppCompatActivity implements Filterable {
 
     LinearLayout linearLayoutForContacts;
-    SearchView contactsSearchView;
 
     // id of long-clicked contact button (when user tries to open floating context menu)
     private int contactId;
     private List<ContactModel> contactsList;
     private List<ContactModel> contactsListFiltered;
+
+    // variable for storing current sorting order
+    private int sortingOrder;
 
 
 
@@ -47,20 +49,48 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
         // load contacts from database
         contactsList = loadContactsFromDatabase();
 
-        // sort contacts alphabetically by contact name
-        SortFunctions.sortContactsListInAlphabeticalOrder(contactsList);
-
         // create list for contacts filtered in SearchView
         contactsListFiltered = new ArrayList<>(contactsList);
 
+        refreshUI();
+
         // show contacts on the screen
-        if (!addButtonsForEachContact(contactsListFiltered, linearLayoutForContacts)) {
-            Toast.makeText(this, R.string.unable_to_load_contacts, Toast.LENGTH_SHORT).show();
-        }
+        //if (!addButtonsForEachContact(contactsListFiltered, linearLayoutForContacts)) {
+        //    Toast.makeText(this, R.string.unable_to_load_contacts, Toast.LENGTH_SHORT).show();
+        //}
     }
 
+    /**
+     * Refreshes contacts on the screen to match with SearchView and selected sorting order
+     */
     private void refreshUI() {
-        // refreshes contacts on the screen to match with SearchView
+
+        // sort contacts according to the previously selected order
+        switch(sortingOrder) {
+            case Constant.SORT_IN_ALPHABETICAL_ORDER:
+                SortFunctions.sortContactsListInAlphabeticalOrder(contactsListFiltered);
+                Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
+                break;
+            case Constant.SORT_BY_SERVICES_COUNT_ASCENDING_ORDER:
+                SortFunctions.sortContactsListByServicesCountInAscendingOrder(contactsListFiltered, this);
+                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+                break;
+            case Constant.SORT_BY_SERVICES_COUNT_DESCENDING_ORDER:
+                SortFunctions.sortContactsListByServicesCountInDescendingOrder(contactsListFiltered, this);
+                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+                break;
+            case Constant.SORT_BY_SERVICES_ALL_SERVICES_COST_ASCENDING_ORDER:
+                SortFunctions.sortContactsListByAllServicesCostInAscendingOrder(contactsListFiltered, this);
+                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+                break;
+            case Constant.SORT_BY_SERVICES_COST_DESCENDING_ORDER:
+                SortFunctions.sortContactsListByAllServicesCostInDescendingOrder(contactsListFiltered, this);
+                Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                SortFunctions.sortContactsListInAlphabeticalOrder(contactsListFiltered);
+                Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
+        }
 
         linearLayoutForContacts.removeAllViews();
 
@@ -86,6 +116,9 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
                 startActivity(intent);
             }
         });
+
+        // choose sorting in alphabetical order as default
+        sortingOrder = Constant.SORT_IN_ALPHABETICAL_ORDER;
 
         // load content
         buildUI();
@@ -265,6 +298,8 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_menu, menu);
 
+
+        // Search bar configuration
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();  // now can use searchView like normal text field
 
@@ -282,5 +317,39 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
         });
 
         return true;
+    }
+
+
+    // Handling sorting options in the options menu
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        // Sort button configuration (alphabetical ascending order)
+
+        switch (item.getItemId()) {
+            case R.id.sort_in_alphabetical_order:
+                sortingOrder = Constant.SORT_IN_ALPHABETICAL_ORDER;
+                refreshUI();
+                return true;
+            case R.id.sort_by_services_count_ascending_order:
+                sortingOrder = Constant.SORT_BY_SERVICES_COUNT_ASCENDING_ORDER;
+                refreshUI();
+                return true;
+            case R.id.sort_by_services_count_descending_order:
+                sortingOrder = Constant.SORT_BY_SERVICES_COUNT_DESCENDING_ORDER;
+                refreshUI();
+                return true;
+            case R.id.sort_by_services_cost_ascending_order:
+                sortingOrder = Constant.SORT_BY_SERVICES_ALL_SERVICES_COST_ASCENDING_ORDER;
+                refreshUI();
+                return true;
+            case R.id.sort_by_services_cost_descending_order:
+                sortingOrder = Constant.SORT_BY_SERVICES_COST_DESCENDING_ORDER;
+                refreshUI();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
