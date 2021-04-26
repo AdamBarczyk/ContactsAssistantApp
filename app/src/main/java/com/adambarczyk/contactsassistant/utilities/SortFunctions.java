@@ -21,7 +21,7 @@ public class SortFunctions {
         Collections.sort(contactsList, new Comparator<ContactModel>() {
             @Override
             public int compare(ContactModel contact1, ContactModel contact2) {
-                return contact1.getName().compareTo(contact2.getName());
+                return contact1.getName().toLowerCase().compareTo(contact2.getName().toLowerCase());
             }
         });
     }
@@ -199,7 +199,8 @@ public class SortFunctions {
         Collections.sort(servicesList, new Comparator<ServiceModel>() {
             @Override
             public int compare(ServiceModel contact1, ServiceModel contact2) {
-                return contact1.getServiceName().compareTo(contact2.getServiceName());
+                return contact1.getServiceName().toLowerCase().
+                        compareTo(contact2.getServiceName().toLowerCase());
             }
         });
     }
