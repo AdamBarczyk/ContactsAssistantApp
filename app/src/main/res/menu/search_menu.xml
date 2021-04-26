@@ -23,13 +23,25 @@
     <item
         android:id="@+id/sort_by_services_cost_ascending_order"
         android:orderInCategory="3"
-        android:title="@string/sort_by_services_cost_ascending_order"
+        android:title="@string/sort_by_all_services_cost_ascending_order"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/sort_by_services_cost_descending_order"
         android:orderInCategory="4"
-        android:title="@string/sort_by_services_cost_descending_order"
+        android:title="@string/sort_by_all_services_cost_descending_order"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_by_service_cost_per_hour_ascending_order"
+        android:orderInCategory="4"
+        android:title="@string/sort_by_service_cost_per_hour_ascending_order"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/sort_by_service_cost_per_hour_descending_order"
+        android:orderInCategory="4"
+        android:title="@string/sort_by_service_cost_per_hour_descending_order"
         app:showAsAction="never" />
 
     <item

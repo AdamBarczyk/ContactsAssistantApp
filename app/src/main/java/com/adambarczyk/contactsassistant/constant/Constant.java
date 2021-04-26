@@ -28,4 +28,6 @@ public class Constant {
     public static final int SORT_BY_SERVICES_COUNT_DESCENDING_ORDER = 2;
     public static final int SORT_BY_SERVICES_ALL_SERVICES_COST_ASCENDING_ORDER = 3;
     public static final int SORT_BY_SERVICES_COST_DESCENDING_ORDER = 4;
+    public static final int SORT_BY_SERVICE_COST_PER_HOUR_ASCENDING_ORDER = 5;
+    public static final int SORT_BY_SERVICE_COST_PER_HOUR_DESCENDING_ORDER = 6;
 }

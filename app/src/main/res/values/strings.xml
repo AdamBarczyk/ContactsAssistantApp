@@ -6,8 +6,10 @@
     <string name="sort_in_alphabetical_order">Sortowanie alfabetyczne: A-Z</string>
     <string name="sort_by_services_count_ascending_order">Sortowanie wg ilości zleceń: A-Z</string>
     <string name="sort_by_services_count_descending_order">Sortowanie wg ilości zleceń: Z-A</string>
-    <string name="sort_by_services_cost_ascending_order">Sortowanie wg kosztu zleceń: A-Z</string>
-    <string name="sort_by_services_cost_descending_order">Sortowanie wg kosztu zleceń: Z-A</string>
+    <string name="sort_by_all_services_cost_ascending_order">Sortowanie wg kosztu zleceń: A-Z</string>
+    <string name="sort_by_all_services_cost_descending_order">Sortowanie wg kosztu zleceń: Z-A</string>
+    <string name="sort_by_service_cost_per_hour_ascending_order">Sortowanie wg kosztu zleceń/h: A-Z</string>
+    <string name="sort_by_service_cost_per_hour_descending_order">Sortowanie wg kosztu zleceń/h: Z-A</string>
 
     <!-- Strings for main activity -->
     <string name="contacts">Kontakty</string>

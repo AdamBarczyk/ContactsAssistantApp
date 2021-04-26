@@ -69,27 +69,27 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
         switch(sortingOrder) {
             case Constant.SORT_IN_ALPHABETICAL_ORDER:
                 SortFunctions.sortContactsListInAlphabeticalOrder(contactsListFiltered);
-                Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
                 break;
             case Constant.SORT_BY_SERVICES_COUNT_ASCENDING_ORDER:
                 SortFunctions.sortContactsListByServicesCountInAscendingOrder(contactsListFiltered, this);
-                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
                 break;
             case Constant.SORT_BY_SERVICES_COUNT_DESCENDING_ORDER:
                 SortFunctions.sortContactsListByServicesCountInDescendingOrder(contactsListFiltered, this);
-                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
                 break;
             case Constant.SORT_BY_SERVICES_ALL_SERVICES_COST_ASCENDING_ORDER:
                 SortFunctions.sortContactsListByAllServicesCostInAscendingOrder(contactsListFiltered, this);
-                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
                 break;
             case Constant.SORT_BY_SERVICES_COST_DESCENDING_ORDER:
                 SortFunctions.sortContactsListByAllServicesCostInDescendingOrder(contactsListFiltered, this);
-                Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
+                break;
+            case Constant.SORT_BY_SERVICE_COST_PER_HOUR_ASCENDING_ORDER:
+                SortFunctions.sortContactsListByServiceCostPerHourInAscendingOrder(contactsListFiltered, this);
+                break;
+            case Constant.SORT_BY_SERVICE_COST_PER_HOUR_DESCENDING_ORDER:
+                SortFunctions.sortContactsListByServiceCostPerHourInDescendingOrder(contactsListFiltered, this);
                 break;
             default:
                 SortFunctions.sortContactsListInAlphabeticalOrder(contactsListFiltered);
-                Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
         }
 
         linearLayoutForContacts.removeAllViews();
@@ -346,6 +346,14 @@ public class ContactsActivity extends AppCompatActivity implements Filterable {
                 return true;
             case R.id.sort_by_services_cost_descending_order:
                 sortingOrder = Constant.SORT_BY_SERVICES_COST_DESCENDING_ORDER;
+                refreshUI();
+                return true;
+            case R.id.sort_by_service_cost_per_hour_ascending_order:
+                sortingOrder = Constant.SORT_BY_SERVICE_COST_PER_HOUR_ASCENDING_ORDER;
+                refreshUI();
+                return true;
+            case R.id.sort_by_service_cost_per_hour_descending_order:
+                sortingOrder = Constant.SORT_BY_SERVICE_COST_PER_HOUR_DESCENDING_ORDER;
                 refreshUI();
                 return true;
             default:
