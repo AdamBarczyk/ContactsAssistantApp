@@ -20,7 +20,7 @@ public class Constant {
     public static final String SERVICE_BUTTON = "serviceButton";
 
     // Constants for area code telephone numbers
-    public static final String PL_PHONE_CODE = "+48";
+    public static final String PL_PHONE_CODE = "+48 ";
 
     // Constants for sorting contacts
     public static final int SORT_IN_ALPHABETICAL_ORDER = 0;
